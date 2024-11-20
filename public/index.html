@@ -25,6 +25,11 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script>
+      var path = window.location.pathname;
+      var redirect = path.startsWith('/<repo>') ? path.substring('<repo>'.length) : '/';
+      window.location.href = redirect;
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
