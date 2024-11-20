@@ -55,7 +55,7 @@ const formatData = (data) => {
   });
 };
 
-export const TanStackTable = ({ data }) => {
+export const TanStackTable = ({ data, refresh }) => {
   const [ipvalue, setValue] = useState(0);
   const rows = formatData(data);
 
@@ -267,6 +267,15 @@ export const TanStackTable = ({ data }) => {
               setValue(e.target.value);
             }}
           />
+          <button
+            style={{ marginLeft: 20 }}
+            onClick={() => {
+              refresh();
+            }}
+            title="Refresh Data"
+          >
+            {"Refresh"}
+          </button>
         </p>
       </div>
       <div style={{ marginTop: 10 }}>

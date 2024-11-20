@@ -1,10 +1,10 @@
-import { combineReducers } from "@reduxjs/toolkit";
+// import { combineReducers } from "@reduxjs/toolkit";
 
-// Example: Add your reducers here
-import coinReducer from "./coinReducer";
+// // Example: Add your reducers here
+// import coinReducer from "./coinReducer";
 
-const rootReducer = combineReducers({
-  coinLocalDB: coinReducer, // Add your reducers here
-});
+// const rootReducer = combineReducers({
+//   coinLocalDB: coinReducer, // Add your reducers here
+// });
 
-export default rootReducer;
+// export default rootReducer;

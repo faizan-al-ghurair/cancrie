@@ -1,5 +1,5 @@
-import { persistor } from "./store";
+// import { persistor } from "./store";
 
-export const resetRedux = () => {
-  persistor.purge();
-};
+// export const resetRedux = () => {
+//   persistor.purge();
+// };
