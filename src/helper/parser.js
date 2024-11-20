@@ -82,8 +82,25 @@ export const apiDataParserToSchema = (apiData) => {
         },
       };
   });
+  console.log("newData.filter", newData);
+
   return newData.filter((item) => item);
 };
+
+//! this function eleminates other entries of data and gives 7 days data only
+function limitDateTimeEntries(obj, maxEntries) {
+  const dateTimeKeys = Object.keys(obj.dateTime); // Get all keys of the dateTime object
+  const limitedKeys = dateTimeKeys.slice(0, maxEntries); // Retain only the first `maxEntries` keys
+  const limitedDateTime = limitedKeys.reduce((acc, key) => {
+    acc[key] = obj.dateTime[key]; // Add only the allowed keys to the new object
+    return acc;
+  }, {});
+
+  return {
+    ...obj,
+    dateTime: limitedDateTime, // Replace the dateTime object with the limited version
+  };
+}
 
 //! this accepts the parsed data and appends as one
 export const updateInDBParser = (newData, dataBaseOldData) => {
@@ -123,6 +140,7 @@ export const updateInDBParser = (newData, dataBaseOldData) => {
   const updatedData = unionItems?.map((itemUni) => {
     let coinFound = 0;
     let mergeObj = itemUni;
+
     dataIntersectionNew?.map((itemInter) => {
       let updatedItem = "";
       if (itemUni.name === itemInter.name) {
@@ -130,8 +148,8 @@ export const updateInDBParser = (newData, dataBaseOldData) => {
         const timeStrampToAppendNewItem =
           itemInter.dateTime[Object.keys(itemInter.dateTime)[0]];
         const dateOfNewItem = Object.keys(itemInter.dateTime)[0];
-        const dateFound = itemUni.dateTime[dateOfNewItem];
 
+        const dateFound = itemUni.dateTime[dateOfNewItem];
         if (dateFound) {
           updatedItem = {
             ...itemUni,
@@ -161,6 +179,15 @@ export const updateInDBParser = (newData, dataBaseOldData) => {
       updatedItemNotOverlapArray.push(itemUni);
     }
   });
+  const mergedArray = [
+    ...updatedItemArrayOverLap,
+    ...updatedItemNotOverlapArray,
+  ];
 
-  return [...updatedItemArrayOverLap, ...updatedItemNotOverlapArray];
+  const filteredMergedArray = mergedArray.map((item) => {
+    const data = limitDateTimeEntries(item, 7);
+    return data;
+  });
+
+  return filteredMergedArray;
 };

@@ -59,14 +59,14 @@ export const TanStackTable = ({ data }) => {
   const [ipvalue, setValue] = useState(0);
   const rows = formatData(data);
 
-  const headerDay1 = Object.keys(data[0].dateTime).reverse()[0];
-  const headerDay2 = Object.keys(data[0].dateTime).reverse()[1];
-  const headerDay3 = Object.keys(data[0].dateTime).reverse()[2];
-  const headerDay4 = Object.keys(data[0].dateTime).reverse()[3];
-  const headerDay5 = Object.keys(data[0].dateTime).reverse()[4];
-  const headerDay6 = Object.keys(data[0].dateTime).reverse()[5];
-  const headerDay7 = Object.keys(data[0].dateTime).reverse()[6];
-  const headerDay8 = Object.keys(data[0].dateTime).reverse()[7];
+  const headerDay1 = Object.keys(data[0].dateTime)?.reverse()?.[0] || "Day 1";
+  const headerDay2 = Object.keys(data[0].dateTime)?.reverse()?.[1] || "Day 2";
+  const headerDay3 = Object.keys(data[0].dateTime)?.reverse()?.[2] || "Day 3";
+  const headerDay4 = Object.keys(data[0].dateTime)?.reverse()?.[3] || "Day 4";
+  const headerDay5 = Object.keys(data[0].dateTime)?.reverse()?.[4] || "Day 5";
+  const headerDay6 = Object.keys(data[0].dateTime)?.reverse()?.[5] || "Day 6";
+  const headerDay7 = Object.keys(data[0].dateTime)?.reverse()?.[6] || "Day 7";
+  const headerDay8 = Object.keys(data[0].dateTime)?.reverse()?.[7] || "Day 8";
   const styles = (params, name) => {
     const value = parseFloat(params.value);
     if (value > ipvalue) {
