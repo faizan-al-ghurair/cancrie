@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/cancrie/static/css/main.3e7921af.css",
-    "main.js": "/cancrie/static/js/main.cbe280de.js",
+    "main.js": "/cancrie/static/js/main.0fb53f35.js",
     "static/js/453.ed3810f9.chunk.js": "/cancrie/static/js/453.ed3810f9.chunk.js",
     "index.html": "/cancrie/index.html",
     "main.3e7921af.css.map": "/cancrie/static/css/main.3e7921af.css.map",
-    "main.cbe280de.js.map": "/cancrie/static/js/main.cbe280de.js.map",
+    "main.0fb53f35.js.map": "/cancrie/static/js/main.0fb53f35.js.map",
     "453.ed3810f9.chunk.js.map": "/cancrie/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3e7921af.css",
-    "static/js/main.cbe280de.js"
+    "static/js/main.0fb53f35.js"
   ]
 }

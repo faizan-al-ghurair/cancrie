@@ -66,5 +66,3 @@
  */
 
 //! clear Local DB
-
-//! this accepts the parsed data and appends as one
