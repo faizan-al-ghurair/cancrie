@@ -3,9 +3,12 @@ import { DataGrid } from "@mui/x-data-grid";
 import {
   get24HrsVol,
   getDay1Price,
+  getDay1Rank,
   getDay1Vol,
   getDayPrice,
+  getDayRank,
   getDayVol,
+  getRank,
 } from "../helper/dayLogics";
 
 const volColName = "volume_24h";
@@ -43,14 +46,14 @@ const formatData = (data) => {
       ["price-" + dataTopMap5]: getDayPrice(item, 5),
       ["price-" + dataTopMap6]: getDayPrice(item, 6),
       ["price-" + dataTopMap7]: getDayPrice(item, 7),
-      ["Rank-" + dateTOmap[0]]: getDay1Price(item, 0),
-      ["Rank-" + dateTOmap[1]]: getDayPrice(item, 1),
-      ["Rank-" + dateTOmap[2]]: getDayPrice(item, 2),
-      ["Rank-" + dateTOmap[3]]: getDayPrice(item, 3),
-      ["Rank-" + dateTOmap[4]]: getDayPrice(item, 4),
-      ["Rank-" + dateTOmap[5]]: getDayPrice(item, 5),
-      ["Rank-" + dateTOmap[6]]: getDayPrice(item, 6),
-      ["Rank-" + dateTOmap[7]]: getDayPrice(item, 7),
+      ["Rank-" + dateTOmap[0]]: getDay1Rank(item, 0),
+      ["Rank-" + dateTOmap[1]]: getDayRank(item, 1),
+      a: "a", // ["Rank-" + dateTOmap[2]]: getDayRank(item, 2),
+      a: "a", // ["Rank-" + dateTOmap[3]]: getDayRank(item, 3),
+      a: "a", // ["Rank-" + dateTOmap[4]]: getDayRank(item, 4),
+      a: "a", // ["Rank-" + dateTOmap[5]]: getDayRank(item, 5),
+      a: "a", // ["Rank-" + dateTOmap[6]]: getDayRank(item, 6),
+      a: "a", // ["Rank-" + dateTOmap[7]]: getDayRank(item, 7),
     };
   });
 };

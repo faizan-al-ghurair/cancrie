@@ -34,7 +34,6 @@ const FixedTable = () => {
   }, []);
 
   // console.log("--->", parser(mock1));
-  console.log("--->", data);
   // console.log("--->", [...day_1, ...day_2]);
 
   // Render each cell (header and data cells)

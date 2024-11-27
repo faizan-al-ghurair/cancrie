@@ -118,3 +118,55 @@ export const getDay1Price = (item) => {
   }
   return "-";
 };
+
+export const getDay1Rank = (item) => {
+  const dateTOmap = item.dateTime; // {11-11-2024: {…}, 12-11-2024: {…}, 13-11-2024: {…},
+  const currentDate = Object.keys(item.dateTime).reverse()[0]; // 18-11-2024
+  if (dateTOmap[currentDate]) {
+    const currentDayLastTime = Object.keys(dateTOmap[currentDate])[
+      Object.keys(dateTOmap[currentDate]).length - 1
+    ]; //18-11-2024_10-30-00
+    const volAtCurrentDayStartTime =
+      dateTOmap[currentDate][currentDayLastTime].cmc_rank; //200
+
+    console.log("--->", volAtCurrentDayStartTime);
+
+    return volAtCurrentDayStartTime;
+  }
+  return "-";
+};
+
+export const getDayRank = (item, numb = 0) => {
+  const dateTOmap = item.dateTime; // {11-11-2024: {…}, 12-11-2024: {…}, 13-11-2024: {…},
+  // console.log("--->", item);
+
+  const currentDate = Object.keys(item.dateTime).reverse()[0]; // 18-11-2024
+  const lastDate = Object.keys(item.dateTime).reverse()[numb]; //17-11-2024
+  // console.log("currentDate", currentDate);
+
+  if (dateTOmap[currentDate] && dateTOmap[lastDate]) {
+    const currentDayLastTime = Object.keys(dateTOmap[currentDate])[
+      Object.keys(dateTOmap[currentDate]).length - 1
+    ]; //18-11-2024_10-30-00
+
+    const previousDayLastTime = Object.keys(dateTOmap[lastDate])[
+      Object.keys(dateTOmap[currentDate]).length - 1
+    ]; //17-11-2024_10-30-00
+
+    const volAtCurrentDayLastTime =
+      dateTOmap[currentDate][currentDayLastTime]?.cmc_rank; //200
+    const volAtPreviousDayLastTime =
+      dateTOmap[lastDate][previousDayLastTime]?.cmc_rank; //10
+
+    console.log("volAtPreviousDayLastTime", volAtPreviousDayLastTime);
+    // console.log("--->", volAtCurrentDayLastTime);
+    // const percentageVolChange = (
+    //   ((volAtCurrentDayLastTime - volAtPreviousDayLastTime) /
+    //     volAtPreviousDayLastTime) *
+    //   100
+    // ).toFixed(2);
+
+    return volAtCurrentDayLastTime;
+  }
+  return "-";
+};
