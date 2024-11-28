@@ -22,7 +22,7 @@ function App() {
     // const url =
     //   "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?CMC_PRO_API_KEY=2008bcdd-bd49-49e3-8ec7-2fb845a9851c&start=1&limit=10";
     try {
-      const response = await fetch("http://13.51.173.4:5000/coins", {});
+      const response = await fetch("https://13.51.173.4/coins", {});
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
