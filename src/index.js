@@ -9,9 +9,8 @@ import reportWebVitals from "./reportWebVitals";
 // import { resetRedux } from "./reduxFunctions";
 
 //   <Provider store={store}>
-{
-  /* <PersistGate loading={null} persistor={persistor}> */
-}
+/* <PersistGate loading={null} persistor={persistor}> */
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
