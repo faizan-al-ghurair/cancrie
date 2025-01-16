@@ -313,7 +313,7 @@ export const App = () => {
 
   const fetchCryptoData = async () => {
     // const response = await fetch("http://localhost:5000/get-coins")
-    const response = await fetch("http://13.51.173.4:5000/get-coins", {})
+    await fetch("http://13.51.173.4:5000/get-coins", {})
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
