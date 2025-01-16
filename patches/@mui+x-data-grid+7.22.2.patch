@@ -1,0 +1,35 @@
+diff --git a/node_modules/@mui/x-data-grid/DataGrid/DataGrid.js b/node_modules/@mui/x-data-grid/DataGrid/DataGrid.js
+index c441176..ac00be1 100644
+--- a/node_modules/@mui/x-data-grid/DataGrid/DataGrid.js
++++ b/node_modules/@mui/x-data-grid/DataGrid/DataGrid.js
+@@ -628,7 +628,7 @@ DataGridRaw.propTypes = {
+   onStateChange: PropTypes.func,
+   /**
+    * Select the pageSize dynamically using the component UI.
+-   * @default [25, 50, 100]
++   * @default [25, 50, 500]
+    */
+   pageSizeOptions: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.number, PropTypes.shape({
+     label: PropTypes.string.isRequired,
+diff --git a/node_modules/@mui/x-data-grid/hooks/features/pagination/gridPaginationUtils.js b/node_modules/@mui/x-data-grid/hooks/features/pagination/gridPaginationUtils.js
+index 7718052..4d858a4 100644
+--- a/node_modules/@mui/x-data-grid/hooks/features/pagination/gridPaginationUtils.js
++++ b/node_modules/@mui/x-data-grid/hooks/features/pagination/gridPaginationUtils.js
+@@ -1,6 +1,6 @@
+ import { GridSignature } from "../../utils/index.js";
+-const MAX_PAGE_SIZE = 100;
+-export const defaultPageSize = autoPageSize => autoPageSize ? 0 : 100;
++const MAX_PAGE_SIZE = 1000;
++export const defaultPageSize = autoPageSize => autoPageSize ? 0 : 1000;
+ export const getPageCount = (rowCount, pageSize, page) => {
+   if (pageSize > 0 && rowCount > 0) {
+     return Math.ceil(rowCount / pageSize);
+@@ -13,7 +13,7 @@ export const getPageCount = (rowCount, pageSize, page) => {
+ };
+ export const getDefaultGridPaginationModel = autoPageSize => ({
+   page: 0,
+-  pageSize: autoPageSize ? 0 : 100
++  pageSize: autoPageSize ? 0 : 1000
+ });
+ export const getValidPage = (page, pageCount = 0) => {
+   if (pageCount === 0) {

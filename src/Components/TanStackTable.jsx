@@ -48,17 +48,21 @@ const formatData = (data) => {
       ["price-" + dataTopMap7]: getDayPrice(item, 7),
       ["Rank-" + dateTOmap[0]]: getDay1Rank(item, 0),
       ["Rank-" + dateTOmap[1]]: getDayRank(item, 1),
-      a: "a", // ["Rank-" + dateTOmap[2]]: getDayRank(item, 2),
-      a: "a", // ["Rank-" + dateTOmap[3]]: getDayRank(item, 3),
-      a: "a", // ["Rank-" + dateTOmap[4]]: getDayRank(item, 4),
-      a: "a", // ["Rank-" + dateTOmap[5]]: getDayRank(item, 5),
-      a: "a", // ["Rank-" + dateTOmap[6]]: getDayRank(item, 6),
-      a: "a", // ["Rank-" + dateTOmap[7]]: getDayRank(item, 7),
+      ["Rank-" + dateTOmap[2]]: getDayRank(item, 2),
+      ["Rank-" + dateTOmap[3]]: getDayRank(item, 3),
+      ["Rank-" + dateTOmap[4]]: getDayRank(item, 4),
+      ["Rank-" + dateTOmap[5]]: getDayRank(item, 5),
+      ["Rank-" + dateTOmap[6]]: getDayRank(item, 6),
+      ["Rank-" + dateTOmap[7]]: getDayRank(item, 7),
     };
   });
 };
 
 export const TanStackTable = ({ data, refresh }) => {
+  const [paginationModel, setPaginationModel] = useState({
+    pageSize: 20,
+    page: 0,
+  });
   const [ipvalue, setValue] = useState(0);
   const rows = formatData(data);
 
@@ -285,8 +289,6 @@ export const TanStackTable = ({ data, refresh }) => {
         <DataGrid
           rows={rows}
           columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
           getRowClassName={(params) =>
             params.indexRelativeToCurrentPage % 2 === 0 ? "even-row" : "odd-row"
           }
