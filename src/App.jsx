@@ -179,7 +179,7 @@ export const App = () => {
         if (item?.history?.length) {
           const toReturn = {
             id: id,
-            col0: id + 1,
+            col0: item.cmc_rank,
             col1: item.symbol,
             col2: (+item?.volume_24h)?.toFixed(2),
             col3: item?.price?.toFixed(2) || 0,
