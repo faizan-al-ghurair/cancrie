@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/cancrie/static/css/main.3e7921af.css",
-    "main.js": "/cancrie/static/js/main.40b196fe.js",
-    "static/js/453.ed3810f9.chunk.js": "/cancrie/static/js/453.ed3810f9.chunk.js",
-    "index.html": "/cancrie/index.html",
-    "main.3e7921af.css.map": "/cancrie/static/css/main.3e7921af.css.map",
-    "main.40b196fe.js.map": "/cancrie/static/js/main.40b196fe.js.map",
-    "453.ed3810f9.chunk.js.map": "/cancrie/static/js/453.ed3810f9.chunk.js.map"
+    "main.css": "/static/css/main.3e7921af.css",
+    "main.js": "/static/js/main.f43911c0.js",
+    "static/js/453.ed3810f9.chunk.js": "/static/js/453.ed3810f9.chunk.js",
+    "index.html": "/index.html",
+    "main.3e7921af.css.map": "/static/css/main.3e7921af.css.map",
+    "main.f43911c0.js.map": "/static/js/main.f43911c0.js.map",
+    "453.ed3810f9.chunk.js.map": "/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.3e7921af.css",
-    "static/js/main.40b196fe.js"
+    "static/js/main.f43911c0.js"
   ]
 }
