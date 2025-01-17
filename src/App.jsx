@@ -2,6 +2,11 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
+function getcomputedAvg(final = 0, initial) {
+  if (!initial) return 0;
+  return ((final - initial) * 100) / initial;
+}
+
 export const App = () => {
   const [dataSetRow, setterDataSetRow] = useState();
   const [dataSetCol, setterDataSetCol] = useState();
@@ -172,104 +177,28 @@ export const App = () => {
 
       const rows = data_new.map((item, id) => {
         if (item?.history?.length) {
-          return {
+          const toReturn = {
             id: id,
             col0: id + 1,
             col1: item.symbol,
             col2: (+item?.volume_24h)?.toFixed(2),
             col3: item?.price?.toFixed(2) || 0,
-            col4:
-              (+item.history[0]?.volume_24h < +item?.volume_24h
-                ? (+item.history[0]?.volume_24h / +item?.volume_24h) * 100
-                : -(+item?.volume_24h * 100) / +item.history[0]?.volume_24h) ||
-              0,
-            col5:
-              (+item.history[1]?.volume_24h < +item?.volume_24h
-                ? (+item.history[1]?.volume_24h / +item?.volume_24h) * 100
-                : -(+item?.volume_24h * 100) / +item.history[1]?.volume_24h) ||
-              0,
-            col6:
-              (+item.history[2]?.volume_24h < +item?.volume_24h
-                ? (+item.history[2]?.volume_24h / +item?.volume_24h) * 100
-                : -(+item?.volume_24h * 100) / +item.history[2]?.volume_24h) ||
-              0,
-            col7:
-              (+item.history[3]?.volume_24h < +item?.volume_24h
-                ? (+item.history[3]?.volume_24h / +item?.volume_24h) * 100
-                : -(+item?.volume_24h * 100) / +item.history[3]?.volume_24h) ||
-              0,
-            col8:
-              (+item.history[4]?.volume_24h < +item?.volume_24h
-                ? (+item.history[4]?.volume_24h / +item?.volume_24h) * 100
-                : -(+item?.volume_24h * 100) / +item.history[4]?.volume_24h) ||
-              0,
-            col9:
-              (+item.history[5]?.volume_24h < +item?.volume_24h
-                ? (+item.history[5]?.volume_24h / +item?.volume_24h) * 100
-                : -(+item?.volume_24h * 100) / +item.history[5]?.volume_24h) ||
-              0,
-            col10:
-              (+item.history[6]?.volume_24h < +item?.volume_24h
-                ? (+item.history[6]?.volume_24h / +item?.volume_24h) * 100
-                : -(+item?.volume_24h * 100) / +item.history[6]?.volume_24h) ||
-              0,
-            col11:
-              (+item.history[0]?.price < +item?.price
-                ? (+item.history[0]?.price / +item?.price) * 100
-                : -(+item?.price * 100) / +item.history[0]?.price) || 0,
-            col12:
-              (+item.history[1]?.price < +item?.price
-                ? (+item.history[1]?.price / +item?.price) * 100
-                : -(+item?.price * 100) / +item.history[1]?.price) || 0,
-            col13:
-              (+item.history[2]?.price < +item?.price
-                ? (+item.history[2]?.price / +item?.price) * 100
-                : -(+item?.price * 100) / +item.history[2]?.price) || 0,
-            col14:
-              (+item.history[3]?.price < +item?.price
-                ? (+item.history[3]?.price / +item?.price) * 100
-                : -(+item?.price * 100) / +item.history[3]?.price) || 0,
-            col15:
-              (+item.history[4]?.price < +item?.price
-                ? (+item.history[4]?.price / +item?.price) * 100
-                : -(+item?.price * 100) / +item.history[4]?.price) || 0,
-            col16:
-              (+item.history[5]?.price < +item?.price
-                ? (+item.history[5]?.price / +item?.price) * 100
-                : -(+item?.price * 100) / +item.history[5]?.price) || 0,
-            col17:
-              (+item.history[6]?.price < +item?.price
-                ? (+item.history[6]?.price / +item?.price) * 100
-                : -(+item?.price * 100) / +item.history[6]?.price) || 0,
-            col18:
-              (+item.history[0]?.cmc_rank < +item?.cmc_rank
-                ? (+item.history[0]?.cmc_rank / +item?.cmc_rank) * 100
-                : -(+item?.cmc_rank * 100) / +item.history[0]?.cmc_rank) || 0,
-            col19:
-              (+item.history[1]?.cmc_rank < +item?.cmc_rank
-                ? (+item.history[1]?.cmc_rank / +item?.cmc_rank) * 100
-                : -(+item?.cmc_rank * 100) / +item.history[1]?.cmc_rank) || 0,
-            col20:
-              (+item.history[2]?.cmc_rank < +item?.cmc_rank
-                ? (+item.history[2]?.cmc_rank / +item?.cmc_rank) * 100
-                : -(+item?.cmc_rank * 100) / +item.history[2]?.cmc_rank) || 0,
-            col21:
-              (+item.history[3]?.cmc_rank < +item?.cmc_rank
-                ? (+item.history[3]?.cmc_rank / +item?.cmc_rank) * 100
-                : -(+item?.cmc_rank * 100) / +item.history[3]?.cmc_rank) || 0,
-            col22:
-              (+item.history[4]?.cmc_rank < +item?.cmc_rank
-                ? (+item.history[4]?.cmc_rank / +item?.cmc_rank) * 100
-                : -(+item?.cmc_rank * 100) / +item.history[4]?.cmc_rank) || 0,
-            col23:
-              (+item.history[5]?.cmc_rank < +item?.cmc_rank
-                ? (+item.history[5]?.cmc_rank / +item?.cmc_rank) * 100
-                : -(+item?.cmc_rank * 100) / +item.history[5]?.cmc_rank) || 0,
-            col24:
-              (+item.history[6]?.cmc_rank < +item?.cmc_rank
-                ? (+item.history[6]?.cmc_rank / +item?.cmc_rank) * 100
-                : -(+item?.cmc_rank * 100) / +item.history[6]?.cmc_rank) || 0,
           };
+          for (let i = 0; i < 7; i++) {
+            toReturn[`col${i + 4}`] = getcomputedAvg(
+              +item?.volume_24h,
+              +item.history[i]?.volume_24h
+            );
+            toReturn[`col${i + 11}`] = getcomputedAvg(
+              +item?.price,
+              +item.history[i]?.price
+            );
+            toReturn[`col${i + 18}`] = getcomputedAvg(
+              +item?.cmc_rank,
+              +item.history[i]?.cmc_rank
+            );
+          }
+          return toReturn;
         } else {
           return {
             id: id,
