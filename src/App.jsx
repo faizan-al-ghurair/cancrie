@@ -1,6 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar, useGridApiRef } from "@mui/x-data-grid";
 
 function getcomputedAvg(final = 0, initial) {
   if (!initial) return 0;
@@ -181,7 +181,7 @@ export const App = () => {
             id: id,
             col0: item.cmc_rank,
             col1: item.symbol,
-            col2: (+item?.volume_24h)?.toFixed(2),
+            col2: +((+item?.volume_24h)?.toFixed(2)),
             col3: item?.price?.toFixed(2) || 0,
           };
           for (let i = 0; i < 7; i++) {
@@ -193,10 +193,8 @@ export const App = () => {
               +item?.price,
               +item.history[i]?.price
             );
-            toReturn[`col${i + 18}`] = getcomputedAvg(
-              +item?.cmc_rank,
-              +item.history[i]?.cmc_rank
-            );
+            toReturn[`col${i + 18}`] =
+              item.history[i]?.cmc_rank - item?.cmc_rank;
           }
           return toReturn;
         } else {
@@ -267,18 +265,12 @@ export const App = () => {
           flexDirection: "row",
         }}
       ></div>
-      <h3>Data Table</h3>
+
       {data_new?.length > 0 && dataSetCol?.length && dataSetCol?.length && (
         <DataGrid
+          slots={{ toolbar: GridToolbar }}
           rows={dataSetRow}
           columns={dataSetCol}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 600,
-              },
-            },
-          }}
           getRowClassName={(params) =>
             params.indexRelativeToCurrentPage % 2 === 0 ? "even-row" : "odd-row"
           }
